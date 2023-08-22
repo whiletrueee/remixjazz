@@ -3,7 +3,6 @@ import type { LoaderArgs, ActionArgs, V2_MetaFunction } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
 import { PrismaClient } from "@prisma/client";
 import { commitSession, getSession } from "~/sessions";
-import { useEffect } from "react";
 export const meta: V2_MetaFunction = () => {
   return [
     { title: "Jazz" },
@@ -90,9 +89,6 @@ export async function action({ request }: ActionArgs) {
 
 export default function Index() {
   const actionData = useActionData<typeof action>();
-  useEffect(() => {
-    console.log(actionData);
-  }, [actionData]);
   return (
     <Form method="post">
       <div className="flex flex-col justify-center items-center gap-5">

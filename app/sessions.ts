@@ -1,8 +1,14 @@
 // app/sessions.ts
 import { createCookieSessionStorage } from "@remix-run/node"; // or cloudflare/deno
 
+export type foodItem = {
+  name: string;
+  price: number;
+};
 type SessionData = {
   username: string;
+  foodData: foodItem[];
+  freindsData: { name: string; hadFood: foodItem[] }[];
 };
 
 type SessionFlashData = {
@@ -22,7 +28,7 @@ const { getSession, commitSession, destroySession } =
       //
       // expires: new Date(Date.now() + 60_000),
       httpOnly: true,
-      maxAge: 60,
+      maxAge: 604800,
       path: "/",
       sameSite: "lax",
       secrets: ["s3cret1"],

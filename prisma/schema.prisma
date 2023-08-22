@@ -15,5 +15,6 @@ model users {
 
 model food {
   id    Int    @id @default(autoincrement())
-  name String @unique(map: "unique_food_name")
+  name  String @unique(map: "unique_food_name")
+  price Int
 }
